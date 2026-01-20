@@ -103,17 +103,18 @@ def pick_display_size():
                 display_selected = options[display_selection -1]
                 display_size_selected = display_selected[0]
                 price += display_selected[1]
-                break
+                return model, storage_name_selected, price, display_size_selected
             except ValueError:
                 print(f"Make sure to enter a number between 1 and {len(options)}, then press ENTER")
 
     else:
-        print(f"There is only one display size available: {ipad_display_size[0] if model == "iPad" else ipad_mini_display_size[0]} inches")
+        print(f"There is only one display size available: {ipad_display_size[0] if model == 'iPad' else ipad_mini_display_size[0]} inches")
         display_size_selected = options[0][0]
         price += options[0][1]
+        return model, storage_name_selected, price, display_size_selected
 
     
-    return model, storage_name_selected, price, display_size_selected
+    
 
 
 # print(pick_display_size())
@@ -149,64 +150,12 @@ def select_connectivity():
             connect_selected = options[connect_selection -1]
             connect_name_selected = connect_selected[0]
             price += connect_selected[1]
+            return model, storage_name_selected, price, display_size_selected, connect_name_selected
             
         except ValueError:
             print(f"Make sure to enter a number between 1 and {len(options)}, then press ENTER")
 
-        return model, storage_name_selected, price, display_size_selected, connect_name_selected
+        
  # print(tuple_ipads)
  # print(select_model()
 print(select_connectivity())
-'''
-for model in ipad_models:
-    print(f"The price of a basic {model} with no add-ons or accessories is ${ipad_models[model] * 1.0825:.2f} (incl. tax)")
-
-def make_list():
-    list_ipad_models = []
-    for model in ipad_models:
-        list_ipad_models.append(model)
-    return list_ipad_models
-
-    for model in ipad_models:
-        print(model)
-
-    list_ipad_models = []
-    for model in ipad_models:
-        list_ipad_models.append(model)
-
-
-def show_list():
-    the_list = make_list()
-    print(the_list)
-
-show_list()
-
-Each function:
-receives the current subtotal
-returns the updated subtotal
-No function should ask for earlier choices again.
-
-Key design rule (important)
-Functions should either:
-ask for user input once, or
-operate on data they receive
-Never both.
-
-
-
-# 1/ single source of truth. 2/ one-time model selection 3/ incremental configuration 4/ final price calculation
-# select_model (scales automatically), configure_storage, add_accessories, compute_tax, show_summary
-'''
-
-# for index, key in enumerate(ipad_models, start=1):
-    #     print(f"{index}: {key}")
-    #list_ipads = list(ipad_models)
-    #for i, model in enumerate(list_ipads, start=1):
-      #  print(f"{i}: {model}")
-
-
-  # print(tuple_ipads[0].index("iPad Pro"))
-    # print(tuple_ipads.index(("iPad Pro", 749)))
-    # print(tuple_ipads[0][0])
-
-   # Note: unpacking operator: key_list = [*my_dict]
